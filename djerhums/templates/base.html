@@ -1,7 +1,7 @@
 {% load static wagtailcore_tags wagtailuserbar %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -33,9 +33,29 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
+        <header class="site-header">
+            <a href="/" class="logo">DR</a>
+            <nav class="site-nav">
+                <a href="#">Produits</a>
+                <a href="#">Evénements</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
 
         {% block content %}{% endblock %}
 
+        <footer class="site-footer">
+            <div class="footer-liens">
+                <div class="reseaux">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                </div>
+                <p class="footer-alcool">
+                    L'abus d'alcool est dangereux pour la santé. A consommer avec modération.<br>
+                    Vente interdite aux mineurs.
+                </p>
+            </footer>
+            
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/djerhums.js' %}"></script>
 
