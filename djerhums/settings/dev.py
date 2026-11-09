@@ -1,5 +1,6 @@
 from .base import *
-
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

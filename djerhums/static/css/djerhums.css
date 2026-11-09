@@ -1,0 +1,224 @@
+/* ==== Variables (couleurs) ==== */
+:root {
+    --color-primary: #0B4F6C;
+    --color-secondary: #01BAEF;
+    --color-accent: #F0A202;
+    --color-background: #F4F7F6;
+    --color-text: #14213D;
+}
+/* ==== Base ==== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI",Arial, sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==== Header ==== */
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: var(--color-primary);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.site-nav {
+    display: flex;
+    gap: 6px;
+}
+
+.site-nav a {
+    padding: 12px 10px;
+    border: 1px solid var(--color-secondary);
+    color: var(--color-secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.site-nav a:hover {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+}
+
+/* ==== Accueil ==== */
+
+.accueil {
+    padding: 20px 16px;
+}
+
+.accueil-titre {
+    margin: 0 0 24px;
+    padding: 16px;
+    border-radius: 50px;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    text-align: center;
+}
+
+.intro-marque {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.intro-image {
+    width: 35%;
+    flex-shrink: 0;
+}
+
+.intro-texte {
+    flex: 1;
+    padding: 16px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 16px;
+    background-color: var(--color-surface);
+}
+
+.produits-vedette {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.produits-vedette h2 {
+    display: inline-block;
+    padding: 8px 48px;
+    border-radius: 50px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.bouton {
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+    text-decoration: none;
+}
+
+.bouton:hover {
+    background-color: var(--color-primary);
+}
+
+.intro-createur {
+    padding: 24px 16px;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    text-align: center;
+}
+
+/* ==== Footer ==== */
+
+.site-footer {
+    padding: 20px 16px;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    text-align: center;
+}
+
+.footer-liens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.reseaux {
+    display: flex;
+    gap: 6px;
+}
+
+.footer-liens a,
+.footer-liens p {
+    margin: 0;
+    padding: 10px 16px;
+    border-radius: 20px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-alcool {
+    margin: 16px 0;
+    font-size: 0.8rem;
+}
+
+/* ==== Tablette et ordinateur ==== */
+
+@media (min-width: 768px) {
+
+    .site-header {
+        padding: 16px 40px;
+    }
+    
+    .site-nav {
+        gap: 12px;
+    }
+
+    .site-nav a {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+
+    .accueil {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 24px;
+    }
+
+    .accueil-titre {
+        max-width: 400px;
+        margin: 0 auto 32px;
+    }
+
+    .intro-image {
+        width: 260px;
+    }
+
+    .intro-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px;
+    }
+
+    .intro-createur {
+        padding: 48px 24px;
+    }
+
+    .site-footer {
+        padding: 20px 40px;
+    }
+
+    .footer-liens {
+        flex-wrap: nowrap;
+    }
+}

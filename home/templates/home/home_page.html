@@ -9,30 +9,36 @@
 {% comment %}
 Delete the line below if you're just getting started and want to remove the welcome screen!
 {% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+<link rel="stylesheet" href="/static/css/djerhums.css">
 {% endblock extra_css %}
 
 {% block content %}
 <main class="accueil">
-    <h1 class="accueil_titre">{{ page.title }}</h1>
 
-    <section class="intro_marque">
+    <h1 class="accueil-titre">{{ page.title }}</h1>
+
+    <section class="intro-marque">
         {% if page.intro_image %}
-            {% image page.intro_image fill-450x450 class="intro_image" %}
+            {% image page.intro_image fill-450x450 class="intro-image" %}
         {% endif %}
-        <div class="intro_texte">
+        <div class="intro-texte">
             {{ page.intro_marque|richtext }}
         </div>
     </section>
 
-    <section class="produits_vedette">
+    <section class="produits-vedette">
         <h2>Produits</h2>
         <a href="#" class="bouton">Voir toute la carte</a>
     </section>
+
+    <section class="intro-createur">
+        {{ page.intro_createur|richtext }}
+    </section>
+
 </main>
+{% endblock content %}
 
         {% comment %}
 Delete the line below if you're just getting started and want to remove the welcome screen!
 {% endcomment %}
 
-{% endblock content %}
