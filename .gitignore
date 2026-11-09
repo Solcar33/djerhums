@@ -1,0 +1,28 @@
+# Environments virtuels
+venv/
+env/
+ENV/
+.venv/
+
+# Base de données locale SQLite (à ne pas mettre sur le serveur)
+*.sqlite3
+db.sqlite3
+
+# Fichiers médias téléversés en local par l'admin
+media/
+
+# Fichiers temporaires et de cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Variables d'environnement / clés secrètes
+.env
+.env.local
+
+# Fichiers d'éditeurs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
