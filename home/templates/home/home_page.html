@@ -4,16 +4,10 @@
 
 {% block body_class %}template-homepage{% endblock %}
 
-{% block extra_css %}
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="/static/css/djerhums.css">
-{% endblock extra_css %}
 
 {% block content %}
-<main class="accueil">
+<main class="accueil" id="contenu">
 
     <h1 class="accueil-titre">{{ page.title }}</h1>
 
@@ -28,7 +22,12 @@ Delete the line below if you're just getting started and want to remove the welc
 
     <section class="produits-vedette">
         <h2>Produits</h2>
-        <a href="#" class="bouton">Voir toute la carte</a>
+        <div class="grille-produits">
+            {% for produit in produits_vedette %}
+                {% include "produits/includes/carte_produit.html" %}
+            {% endfor %}
+        </div>
+        <a href="{% slugurl 'produits' %}" class="bouton">Voir toute la carte</a>
     </section>
 
     <section class="intro-createur">
@@ -38,7 +37,5 @@ Delete the line below if you're just getting started and want to remove the welc
 </main>
 {% endblock content %}
 
-        {% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
+
 

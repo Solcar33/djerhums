@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<main class="contact" id="contenu">
+    <h1>{{ page.title }}</h1>
+
+    <div class="contact-merci">
+        {{ page.thank_you_text|richtext }}
+    </div>
+
+    <a href="{% pageurl page.get_parent %}" class="bouton">Retour à l'accueil</a>
+</main>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<main class="contact" id="contenu">
+    <h1>{{ page.title }}</h1>
+
+    <div class="contact-intro">{{ page.intro|richtext }}</div>
+
+    {% if form.errors %}
+        <p class="erreur-globale" role="alert">
+            Le formulaire contient des erreurs. Merci de les corriger.
+        </p>
+    {% endif %}
+
+    <p class="contact-legende">Les champs marqués d'un <span aria-hidden="true">*</span> sont obligatoires.</p>
+
+    <form action="{% pageurl page %}" method="post" class="formulaire-contact">
+        {% csrf_token %}
+
+        {% for field in form %}
+            {% if field.widget_type == "radioselect" %}
+                <fieldset class="champ champ-{{ field.name }}">
+                    <legend>{{ field.label }}{% if field.field.required %} <span aria-hidden="true">*</span>{% endif %}</legend>
+                    {{ field }}
+                    {% for erreur in field.errors %}<p class="erreur">{{ erreur }}</p>{% endfor %}
+                </fieldset>
+
+            {% elif field.widget_type == "checkbox" %}
+                <div class="champ champ-case champ-{{ field.name }}">
+                    {{ field }}
+                    <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} <span aria-hidden="true">*</span>{% endif %}</label>
+                    {% if "donnees" in field.name %}
+                        <a href="{% slugurl 'confidentialite' %}" class="lien-confidentialite">Politique de confidentialité</a>
+                    {% endif %}
+                                        {% if field.errors %}<div id="{{ field.id_for_label }}_error">{% for erreur in field.errors %}<p class="erreur">{{ erreur }}</p>{% endfor %}</div>{% endif %}
+                </div>
+
+            {% else %}
+                <div class="champ champ-{{ field.name }}">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} <span aria-hidden="true">*</span>{% endif %}</label>
+                    {{ field }}
+                    {% if field.help_text %}<p class="aide" id="{{ field.id_for_label }}_helptext">{{ field.help_text }}</p>{% endif %}
+                                        {% if field.errors %}<div id="{{ field.id_for_label }}_error">{% for erreur in field.errors %}<p class="erreur">{{ erreur }}</p>{% endfor %}</div>{% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        
+        <button type="submit" class="bouton">Envoyer</button>
+    </form>
+    <p class="contact-rgpd">
+        Les informations saisies dans ce formulaire sont utilisées uniquement pour répondre à votre demande
+        et traiter votre commande. Elles ne sont ni revendues ni utilisées à des fins publicitaires.
+        Vous pouvez demander l'accès, la rectification ou la suppression de vos données par e-mail.
+        Pour en savoir plus, consultez notre
+        <a href="{% slugurl 'confidentialite' %}">politique de confidentialité</a>.
+    </p>
+</main>
+{% endblock %}

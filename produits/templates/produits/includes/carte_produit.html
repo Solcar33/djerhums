@@ -1,0 +1,10 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<article class="carte-produit">
+    <a href="{% pageurl produit %}">
+        {% if produit.image %}
+            {% image produit.image fill-600x900 format-webp loading="lazy" alt=produit.title %}
+        {% endif %}
+        <h3>{{ produit.title }}</h3>
+        <p class="carte-prix">{{ produit.prix|floatformat:2 }} €</p>
+    </a>
+</article>

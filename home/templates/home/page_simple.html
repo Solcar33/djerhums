@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<main class="page-simple" id="contenu">
+    <h1>{{ page.title }}</h1>
+
+    {% if page.intro %}
+        <p class="page-simple-intro">{{ page.intro }}</p>
+    {% endif %}
+
+    <div class="page-simple-corps">
+        {{ page.corps|richtext }}
+    </div>
+</main>
+{% endblock %}

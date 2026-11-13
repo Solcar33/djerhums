@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "contact",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.sitemaps",
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
 ]
 
 MIDDLEWARE = [
@@ -164,6 +166,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "Djé-Rhums"
+WAGTAIL_ALLOW_UNICODE_SLUGS = False
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html

@@ -1,0 +1,12 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<article class="carte-evenement">
+    <a href="{% pageurl evenement %}">
+        {% if evenement.image %}
+            {% image evenement.image fill-800x600 alt=evenement.title %}
+        {% endif %}
+        <h2>{{ evenement.title }}</h2>
+        <p class="carte-date">
+            <time datetime="{{ evenement.date|date:'Y-m-d' }}">{{ evenement.date|date:"j F Y" }}</time>
+        </p>
+    </a>
+</article>

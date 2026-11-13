@@ -1,10 +1,10 @@
 /* ==== Variables (couleurs) ==== */
 :root {
-    --color-primary: #0B4F6C;
-    --color-secondary: #01BAEF;
-    --color-accent: #F0A202;
-    --color-background: #F4F7F6;
-    --color-text: #14213D;
+  --color-primary: #8B3A2B;
+  --color-secondary: #C86D3F;
+  --color-accent: #E9C46A;
+  --color-background: #FDFBF7;
+  --color-text: #2C1E1A;
 }
 /* ==== Base ==== */
 
@@ -25,6 +25,159 @@ img {
     display: block;
 }
 
+.lien-evitement {
+    position: absolute;
+    left: -9999px;
+}
+
+.lien-evitement:focus {
+    left: 16px;
+    top: 16px;
+    z-index: 100;
+    padding: 12px 16px;
+    background-color: var(--color-accent);
+    color: var(--color-text);
+}
+a:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+.site-header a:focus-visible,
+.site-footer a:focus-visible {
+    outline-color: var(--color-accent);
+}
+
+.lien-confidentialite {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.contact-rgpd {
+    margin: 24px 0 0;
+    font-size: 0.9rem;
+}
+
+.contact-rgpd a {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+/* ==== Contact ==== */
+
+.contact {
+    padding: 20px 16px;
+}
+
+.page-simple {
+    padding: 20px 16px;
+}
+
+.page-simple h1 {
+    margin: 0 0 16px;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.page-simple-intro {
+    margin: 0 0 24px;
+    font-size: 1.1rem;
+}
+
+.page-simple-corps h2 {
+    margin: 32px 0 8px;
+    color: var(--color-primary);
+}
+
+.contact h1 {
+    margin: 0 0 16px;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.formulaire-contact {
+    display: grid;
+    gap: 16px;
+}
+
+.formulaire-contact .bouton {
+    justify-self: center;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.champ {
+    display: grid;
+    align-content: start;
+    gap: 6px;
+}
+
+.champ > label,
+.champ legend {
+    font-weight: bold;
+}
+
+.champ-case label {
+    font-weight: normal;
+}
+
+.champ input[type="text"],
+.champ input[type="email"],
+.champ input[type="number"],
+.champ select,
+.champ textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--color-text);
+    font: inherit;
+}
+
+.champ textarea {
+    min-height: 140px;
+}
+
+.champ fieldset,
+fieldset.champ {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.champ-case {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.champ-case .erreur {
+    width: 100%;
+}
+
+.champ-case input {
+    margin-top: 4px;
+}
+
+.erreur,
+.erreur-globale {
+    margin: 0;
+    color: #9b1c1c;
+    font-weight: bold;
+}
+
+.aide {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
 /* ==== Header ==== */
 
 .site-header {
@@ -36,16 +189,19 @@ img {
 }
 
 .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     width: 56px;
     height: 56px;
     border-radius: 50%;
+    overflow: hidden;
     background-color: var(--color-secondary);
-    color: var(--color-primary);
-    font-weight: bold;
-    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .site-nav {
@@ -56,7 +212,7 @@ img {
 .site-nav a {
     padding: 12px 10px;
     border: 1px solid var(--color-secondary);
-    color: var(--color-secondary);
+    color: var(--color-accent);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.8rem;
@@ -78,7 +234,7 @@ img {
     padding: 16px;
     border-radius: 50px;
     background-color: var(--color-primary);
-    color: var(--color-secondary);
+    color: var(--color-accent);
     text-align: center;
 }
 
@@ -95,10 +251,13 @@ img {
 
 .intro-texte {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 16px;
     border: 1px solid var(--color-secondary);
     border-radius: 16px;
-    background-color: var(--color-surface);
+    background-color: var(--color-background);
 }
 
 .produits-vedette {
@@ -110,7 +269,21 @@ img {
     display: inline-block;
     padding: 8px 48px;
     border-radius: 50px;
-    background-color: var(--color-secondary);
+    background-color: var(--color-accent);
+    color: var(--color-text);
+}
+
+.produits {
+    padding: 20px 16px;
+}
+
+.produits h1 {
+    margin: 0 0 24px;
+    text-align: center;
+}
+
+.produits h2 {
+    margin: 32px 0 0;
     color: var(--color-primary);
 }
 
@@ -118,12 +291,87 @@ img {
     display: inline-block;
     padding: 14px 28px;
     background-color: var(--color-accent);
-    color: var(--color-surface);
+    color: var(--color-text);
     text-decoration: none;
 }
 
 .bouton:hover {
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
+}
+
+/* ==== Produits ==== */
+
+.grille-produits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.carte-produit {
+    border: 1px solid var(--color-secondary);
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: var(--color-background);
+}
+
+.carte-produit img {
+    width: 100%;
+    height: auto;
+}
+
+.carte-produit a {
+    display: block;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.carte-produit h3,
+.carte-prix {
+    margin: 0;
+    padding: 12px 16px 0;
+}
+
+.carte-prix {
+    padding-bottom: 16px;
+    font-weight: bold;
+}
+
+.carte-produit:hover {
+    border-color: var(--color-primary);
+}
+
+.carte-produit a:focus-visible {
+    outline: none;
+}
+
+.carte-produit:has(a:focus-visible) {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+.fiche-produit {
+    padding: 20px 16px;
+}
+
+.fiche-produit h1 {
+    margin: 0 0 16px;
+    color: var(--color-primary);
+}
+
+.fiche-produit img {
+    max-width: 420px;
+    margin: 0 auto 16px;
+    border-radius: 16px;
+}
+
+.fiche-description {
+    margin-bottom: 16px;
+}
+
+.fiche-produit a {
+    color: var(--color-primary);
+    font-weight: bold;
 }
 
 .intro-createur {
@@ -131,6 +379,161 @@ img {
     background-color: var(--color-primary);
     color: var(--color-background);
     text-align: center;
+}
+
+/* ==== Événements ==== */
+
+.evenements,
+.fiche-evenement {
+    padding: 20px 16px;
+}
+
+.evenements h1,
+.fiche-evenement h1 {
+    margin: 0 0 16px;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.evenements-intro {
+    margin: 0 0 24px;
+    text-align: center;
+}
+
+.grille-evenements {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.carte-evenement {
+    border: 1px solid var(--color-secondary);
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: var(--color-background);
+}
+
+.carte-evenement img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.carte-evenement a {
+    display: block;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.carte-evenement h2 {
+    margin: 0;
+    padding: 12px 16px 0;
+    font-size: 1.2rem;
+}
+
+.carte-date {
+    margin: 0;
+    padding: 4px 16px 16px;
+}
+
+.carte-evenement:hover {
+    border-color: var(--color-primary);
+}
+
+.carte-evenement a:focus-visible {
+    outline: none;
+}
+
+.carte-evenement:has(a:focus-visible) {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+.fiche-evenement .carte-date {
+    padding: 0 0 16px;
+    text-align: center;
+}
+
+.fiche-evenement img {
+    max-width: 600px;
+    margin: 0 auto 16px;
+    border-radius: 16px;
+}
+
+.fiche-evenement a {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.partenaires {
+    margin-top: 32px;
+    padding: 24px 16px;
+    border-radius: 16px;
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    text-align: center;
+}
+
+.partenaires h2 {
+    margin: 0 0 12px;
+}
+
+.liste-partenaires {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px 32px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.liste-partenaires a {
+    display: block;
+    color: var(--color-text);
+    font-weight: bold;
+}
+
+.liste-partenaires img {
+    max-height: 70px;
+    width: auto;
+}
+
+.suivez-nous {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.suivez-nous h2 {
+    margin: 0 0 12px;
+    color: var(--color-primary);
+}
+
+.suivez-nous ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.suivez-nous a {
+    display: block;
+    padding: 12px 24px;
+    border-radius: 24px;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.suivez-nous a:hover {
+    background-color: var(--color-text);
 }
 
 /* ==== Footer ==== */
@@ -160,7 +563,7 @@ img {
     margin: 0;
     padding: 10px 16px;
     border-radius: 20px;
-    background-color: var(--color-secondary);
+    background-color: var(--color-background);
     color: var(--color-primary);
     text-decoration: none;
     font-size: 0.9rem;
@@ -169,6 +572,16 @@ img {
 .footer-alcool {
     margin: 16px 0;
     font-size: 0.8rem;
+}
+
+.footer-local {
+    margin: 16px 0 0;
+    font-size: 0.9rem;
+}
+
+.footer-local a {
+    color: var(--color-background);
+    font-weight: bold;
 }
 
 /* ==== Tablette et ordinateur ==== */
@@ -203,10 +616,8 @@ img {
         width: 260px;
     }
 
-    .intro-text {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .intro-texte {
+
         padding: 24px;
     }
 
@@ -220,5 +631,80 @@ img {
 
     .footer-liens {
         flex-wrap: nowrap;
+    }
+
+    .grille-produits {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .produits {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 24px;
+    }
+
+    .fiche-produit {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 40px 24px;
+    }
+
+    .contact {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 24px;
+    }
+
+    .formulaire-contact {
+       grid-template-columns: 1fr 1fr;
+       column-gap: 32px;
+      grid-auto-flow: dense;
+    }
+
+    .champ-message {
+    grid-row: span 3;
+    }
+
+    .champ-nom,
+    .champ-entreprise,
+    .champ-email,
+    .champ-telephone,
+    .champ-adresse {
+        grid-column: 1;
+    }
+
+    .champ-motif,
+    .champ-vous_etes,
+    .champ-produits_commandes,
+    .champ-quantite,
+    .champ-message {
+        grid-column: 2;
+    }
+
+    .champ-case,
+    .formulaire-contact .bouton {
+        grid-column: 1 / -1;
+    }
+
+    .formulaire-contact .bouton {
+        justify-self: center;
+
+    }
+
+    .page-simple {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 40px 24px;
+    }
+
+    .grille-evenements {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .evenements,
+    .fiche-evenement {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 24px;
     }
 }

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<main class="evenements" id="contenu">
+    <h1>{{ page.title }}</h1>
+
+    {% if page.intro %}
+        <p class="evenements-intro">{{ page.intro }}</p>
+    {% endif %}
+
+    {% if evenements %}
+    <div class="grille-evenements">
+        {% for evenement in evenements %}
+            {% include "evenements/includes/carte_evenement.html" %}
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>Aucun événement n'est programmé pour le moment.</p>
+    {% endif %}
+
+    {% if page.partenaires or liste_partenaires %}
+    <section class="partenaires">
+        <h2>Partenaires pros</h2>
+        {% if page.partenaires %}
+            <div>{{ page.partenaires|richtext }}</div>
+        {% endif %}
+
+        {% if liste_partenaires %}
+        <ul class="liste-partenaires">
+            {% for partenaire in liste_partenaires %}
+            <li>
+                {% if partenaire.lien %}<a href="{{ partenaire.lien }}" target="_blank" rel="noopener noreferrer" aria-label="{{ partenaire.nom }} (nouvel onglet)">{% endif %}
+                    {% if partenaire.logo %}
+                        {% image partenaire.logo max-200x100 alt=partenaire.nom %}
+                    {% else %}
+                        {{ partenaire.nom }}
+                    {% endif %}
+                {% if partenaire.lien %}</a>{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+    {% endif %}
+        {% if page.facebook or page.instagram %}
+    <section class="suivez-nous">
+        <h2>Suivez-nous</h2>
+        <ul>
+            {% if page.facebook %}
+            <li><a href="{{ page.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook (nouvel onglet)">Facebook</a></li>
+            {% endif %}
+            {% if page.instagram %}
+            <li><a href="{{ page.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram (nouvel onglet)">Instagram</a></li>
+            {% endif %}
+        </ul>
+    </section>
+    {% endif %}
+</main>
+{% endblock %}

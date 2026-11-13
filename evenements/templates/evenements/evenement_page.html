@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<main class="fiche-evenement" id="contenu">
+    <h1>{{ page.title }}</h1>
+
+    <p class="carte-date">
+        <time datetime="{{ page.date|date:'Y-m-d' }}">{{ page.date|date:"j F Y" }}</time>
+        {% if page.lieu %} · {{ page.lieu }}{% endif %}
+    </p>
+
+    {% if page.image %}
+        {% image page.image fill-800x600 alt=page.title %}
+    {% endif %}
+
+    <div class="fiche-description">{{ page.description|richtext }}</div>
+
+    <a href="{% pageurl page.get_parent %}">← Retour aux événements</a>
+</main>
+{% endblock %}

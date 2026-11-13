@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<main class="fiche-produit" id="contenu">
+    <h1>{{ page.title }}</h1>
+
+    {% if page.image %}
+        {% image page.image fill-600x900 alt=page.title %}
+    {% endif %}
+
+    <div class="fiche-description">{{ page.description|richtext }}</div>
+
+    <p>Prix : {{ page.prix|floatformat:2 }} €</p>
+    <p>Degré d'alcool : {{ page.degre_alcool }} % vol.</p>
+
+    <a href="{% pageurl page.get_parent %}">← Retour à la carte</a>
+</main>
+{% endblock %}

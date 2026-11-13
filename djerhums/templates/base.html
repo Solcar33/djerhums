@@ -22,7 +22,8 @@
         {% if request.in_preview_panel %}
         <base target="_blank">
         {% endif %}
-
+        <link rel="icon" href="{% static 'img/favicon.ico' %}" sizes="48x48">
+        <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/djerhums.css' %}">
 
@@ -32,28 +33,35 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        <a href="#contenu" class="lien-evitement">Aller au contenu principal</a>
         {% wagtailuserbar %}
         <header class="site-header">
-            <a href="/" class="logo">DR</a>
-            <nav class="site-nav">
-                <a href="#">Produits</a>
-                <a href="#">Evénements</a>
-                <a href="#">Contact</a>
+            <a href="/" class="logo">
+                <img src="{% static 'img/logo-carre.jpg' %}" alt="Djé-Rhums, retour à l'accueil">
+            </a>           
+            <nav class="site-nav" aria-label="Navigation principale">
+                <a href="{% slugurl 'produits' %}">Produits</a>
+                <a href="{% slugurl 'evenements' %}">Événements</a>
+                <a href="{% slugurl 'contactez-dje-rhums' %}">Contact</a>
             </nav>
         </header>
 
         {% block content %}{% endblock %}
 
-                <footer class="site-footer">
+        <footer class="site-footer">
             <div class="footer-liens">
                 <div class="reseaux">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (nouvel onglet)">Facebook</a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (nouvel onglet)">Instagram</a>
                 </div>
-                <a href="#">Mentions légales</a>
-                <a href="#">Confidentialité</a>
+                <a href="{% slugurl 'mentions-legales' %}">Mentions légales</a>
+                <a href="{% slugurl 'confidentialite' %}">Confidentialité</a>
                 <p>&copy; {% now "Y" %} DjéRhums</p>
             </div>
+            <p class="footer-local">
+                Djé-Rhums, rhums arrangés artisanaux à Cadaujac, près de Bordeaux.
+                <a href="{% slugurl 'contactez-dje-rhums' %}">Nous contacter</a>
+            </p>
             <p class="footer-alcool">
                 L'abus d'alcool est dangereux pour la santé. À consommer avec modération.<br>
                 Vente interdite aux mineurs.
