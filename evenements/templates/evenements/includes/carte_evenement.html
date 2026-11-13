@@ -2,7 +2,7 @@
 <article class="carte-evenement">
     <a href="{% pageurl evenement %}">
         {% if evenement.image %}
-            {% image evenement.image fill-800x600 alt=evenement.title %}
+            {% image evenement.image fill-640x360 format-webp loading="lazy" alt=evenement.title %}
         {% endif %}
         <h2>{{ evenement.title }}</h2>
         <p class="carte-date">

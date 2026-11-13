@@ -11,7 +11,7 @@
     </p>
 
     {% if page.image %}
-        {% image page.image fill-800x600 alt=page.title %}
+        {% image page.image fill-800x600 format-webp loading="lazy" alt=page.title %}
     {% endif %}
 
     <div class="fiche-description">{{ page.description|richtext }}</div>
